@@ -16,6 +16,9 @@ PublishPort=sourceport:containerport
 #EnvironmentFile=/tmp/env
 #StartWithPod=true
 
+#[Network]
+#Host=true
+
 [Service]
 Restart=unless-stopped
 
