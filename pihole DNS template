@@ -1,0 +1,20 @@
+# Pihole quadlet for local DNS that can be used with a reverse proxy
+# Admin console for Pihole would be http://<IPv4-address>:81/admin
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=30
+
+[Container]
+Image=docker.io/pihole/pihole:latest
+Network=podman
+Volume=~/pihole/etc:/etc/pihole:z
+Volume=/etc/localtime:/etc/localtime:ro
+PublishPort=53:53/tcp
+PublishPort=53:53/udp
+PublishPort=81:80/tcp
+#PublishPort=67:67/udp
+#PublishPort=443:443/tcp
+
+[Install]
+WantedBy=default.target
